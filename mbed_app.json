@@ -1,0 +1,9 @@
+{
+    "target_overrides": {
+        "*": {
+            "target.features": ["LWIP"],
+            "target.release_versions": ["2", "5"],
+            "platform.stdio-baud-rate": 115200
+        }
+    }
+}
