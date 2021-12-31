@@ -32,9 +32,6 @@ unsigned long long dt_1;
 unsigned long long dt_2; // microsecond
 
 
-        // main_Servo.Speed_Move(0.3); //servo rotate at x speed
-        // Servo_Pos = main_Servo.Servo_Init_Pos(); // Servo Position reading
-        // End test 
 
 int main() {
     Line_Setup();
@@ -42,28 +39,6 @@ int main() {
     while(1) { // main loop
         t_1.reset();
         dt_1 = std::chrono::duration_cast<std::chrono::microseconds>(t_1.elapsed_time()).count();
-        
-        Serial_Print(1000000);
-        /*
-        R_Motor_PWM.write(0.2f);
-        R_Motor_Sig.write(0.0f);
-        
-        L_Motor_PWM.write(0.2f);
-        L_Motor_Sig.write(0.0f);
-
-        thread_sleep_for(1000);
-
-
-        R_Motor_PWM.write(0.0f);
-        R_Motor_Sig.write(0.0f);
-        
-        L_Motor_PWM.write(0.0f);
-        L_Motor_Sig.write(0.0f);
-
-
-        while(SW_1.read() == 0);
-        thread_sleep_for(1000);
-        */
         
         main_Line.read(); // Read line position
         main_Line.Pos_Calculate(0.7);
@@ -121,36 +96,3 @@ void Serial_Print(int Time_Interval){
         printf("\n");
     }
 }
-
-
-
-
-
-
-
-
-
-/*
-
-calibrate IR Sensor(measure Floor and line value)
-calibrate Servo (move with hand to mid position)
-  wait for signal --> 
-  {
-    line read (Finish)
-    check for line end --> stop robot (finish)
-    check for blank line --> stop robot (finish)
-    calculate error (finish)
-    calculate PD output (finish)
-    move servo accordingly (finish)
-
-    calculate servo position (finish)
-    calculate error (finish)
-    Kinematic (in process)
-    determine motor speed
-    calculate PD output
-    calculate robot movement
-    move the robot
-    tuning the robot
-  }
-
-*/
